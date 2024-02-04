@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-storagemodule",
+  "name": "node-red-contrib-storagemodule-typeorm",
   "version": "1.0.1",
   "description": "A module to provide Node-RED persistence using a typeorm",
   "main": "./dist/index.js",
@@ -19,10 +19,7 @@
     "url": "https://github.com/luizcarlospedrosogomes/node-red-contrib-storagemodule-typeorm/issues"
   },
   "homepage": "https://github.com/luizcarlospedrosogomes/node-red-contrib-storagemodule-typeorm#readme",
-  "dependencies": {
-    "@sap/hana-client": "^2.19.21",
-    "hdb-pool": "^0.1.6",
-    "pg": "^8.2.1",
+  "dependencies": {    
     "reflect-metadata": "^0.2.1",
     "typeorm": "^0.3.20"
   },

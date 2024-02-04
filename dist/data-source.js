@@ -13,15 +13,29 @@ var AppDataSource = function (settings) {
     switch (settings.type) {
         case 'sqlite':
             return dataSourceSqlite(settings.name);
-            break;
         case 'postgres':
             validateDataSourcePG(settings);
             return dataSourcePG(settings);
+        case 'hana':
+            return dataSourceHana(settings);
         default:
             break;
     }
 };
 exports.AppDataSource = AppDataSource;
+var dataSourceHana = function (hanaOptions) { return new typeorm_1.DataSource({
+    type: 'sap',
+    pool: hanaOptions.poll || { requestTimeout: 50000 },
+    host: hanaOptions.host,
+    port: hanaOptions.port,
+    username: hanaOptions.user,
+    password: hanaOptions.password,
+    ca: hanaOptions.certificate,
+    synchronize: hanaOptions.synchronize || true,
+    schema: hanaOptions.schema,
+    hanaClientDriver: hanaOptions.driver,
+    entities: entities,
+}); };
 var dataSourceSqlite = function (name) { return new typeorm_1.DataSource({
     type: "sqlite",
     database: name,
@@ -67,6 +81,9 @@ var validate = function (settings) {
         if (!element) {
             throw new Error("type is out range ".concat(JSON.stringify(types)));
         }
+    }
+    if (settings.type === 'hana') {
+        return;
     }
     if (!settings.name) {
         throw new Error('[name] is required');

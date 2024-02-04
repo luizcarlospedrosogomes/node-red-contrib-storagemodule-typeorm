@@ -19,15 +19,15 @@ var Flows = /** @class */ (function () {
         __metadata("design:type", Number)
     ], Flows.prototype, "id", void 0);
     __decorate([
-        (0, typeorm_1.Column)({ nullable: true }),
+        (0, typeorm_1.Column)({ nullable: true, type: 'nclob' }),
         __metadata("design:type", String)
     ], Flows.prototype, "flows", void 0);
     __decorate([
-        (0, typeorm_1.Column)({ nullable: true }),
+        (0, typeorm_1.Column)({ nullable: true, type: 'nclob' }),
         __metadata("design:type", String)
     ], Flows.prototype, "credentials", void 0);
     __decorate([
-        (0, typeorm_1.Column)({ nullable: true }),
+        (0, typeorm_1.Column)({ nullable: true, type: 'nclob' }),
         __metadata("design:type", String)
     ], Flows.prototype, "settings", void 0);
     Flows = __decorate([

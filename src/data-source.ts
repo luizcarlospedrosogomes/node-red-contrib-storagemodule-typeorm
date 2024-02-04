@@ -6,20 +6,36 @@ import { Library } from "./library.entity"
 const entities = [Flows, Library];
 const types = ['sqlite', 'hana', 'postgres'];
 
+
 export const AppDataSource = (settings) =>{
     settings = settings.dataSource;
     validate(settings);
     switch (settings.type) {
         case 'sqlite':
-            return dataSourceSqlite(settings.name);
-            break;
-        case 'postgres':
-        validateDataSourcePG(settings)
-        return dataSourcePG(settings);
+            return dataSourceSqlite(settings.name);            
+        case 'postgres':            
+            validateDataSourcePG(settings);
+            return dataSourcePG(settings);
+        case 'hana': 
+            return dataSourceHana(settings);
         default:
             break;
     }
 }
+
+const dataSourceHana = (hanaOptions) => new DataSource({
+    type: 'sap',
+    pool: hanaOptions.poll || { requestTimeout: 50000 },
+    host: hanaOptions.host,
+    port: hanaOptions.port,
+    username: hanaOptions.user,
+    password: hanaOptions.password,
+    ca: hanaOptions.certificate,
+    synchronize: hanaOptions.synchronize || true,
+    schema: hanaOptions.schema,
+    hanaClientDriver: hanaOptions.driver,
+    entities,
+})
 
 const dataSourceSqlite = (name: string) => new DataSource({
     type: "sqlite",
@@ -70,6 +86,10 @@ const validate = (settings) =>{
         if(!element){
             throw new Error(`type is out range ${JSON.stringify(types)}`);
         }
+    }
+
+    if(settings.type === 'hana'){
+        return;
     }
 
     if (!settings.name){
