@@ -18,6 +18,22 @@ var Library = /** @class */ (function () {
         (0, typeorm_1.PrimaryGeneratedColumn)(),
         __metadata("design:type", Number)
     ], Library.prototype, "id", void 0);
+    __decorate([
+        (0, typeorm_1.Column)({ nullable: true }),
+        __metadata("design:type", String)
+    ], Library.prototype, "filepath", void 0);
+    __decorate([
+        (0, typeorm_1.Column)({ nullable: true }),
+        __metadata("design:type", String)
+    ], Library.prototype, "filename", void 0);
+    __decorate([
+        (0, typeorm_1.Column)({ nullable: true }),
+        __metadata("design:type", String)
+    ], Library.prototype, "meta", void 0);
+    __decorate([
+        (0, typeorm_1.Column)({ nullable: true }),
+        __metadata("design:type", String)
+    ], Library.prototype, "file", void 0);
     Library = __decorate([
         (0, typeorm_1.Entity)()
     ], Library);
