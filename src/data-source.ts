@@ -39,13 +39,13 @@ const dataSourcePG = (settings) => new DataSource({
     password: settings.password,
     database: settings.name,
     schema: settings.schema || 'public',
-    synchronize:settings.synchronize || true,
-    ssl: settings.ssl || false,    
+    synchronize:settings.synchronize || true,    
+    ssl:settings.ssl || true,
     entities,
 })
 
 const validateDataSourcePG = (settings) => {
-    const { host, username, password, name } = settings;
+    const { host, username, password, name, ssl } = settings;
     if (!host) {
         throw new Error("The [host] field is required and cannot be empty.");
     }
@@ -58,7 +58,6 @@ const validateDataSourcePG = (settings) => {
     if (!name) {
         throw new Error("The [name] field is required and cannot be empty.");
     }
-
 }
 
 const validate = (settings) =>{

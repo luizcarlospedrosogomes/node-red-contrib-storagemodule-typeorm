@@ -2,7 +2,7 @@
   "name": "node-red-contrib-storagemodule",
   "version": "1.0.1",
   "description": "A module to provide Node-RED persistence using a typeorm",
-  "main": "./build/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "npx ts-node src/index.ts",
     "link": "tsc --build && npm link",
