@@ -1,23 +1,37 @@
 {
-  "name": "node-red-contrib-storagemodule-postgres",
+  "name": "node-red-contrib-storagemodule",
   "version": "1.0.1",
-  "description": "A module to provide Node-RED persistence using a postgres database instead of the default filesystem",
-  "main": "postgresfilesystem.js",
+  "description": "A module to provide Node-RED persistence using a typeorm",
+  "main": "./build/index.js",
   "scripts": {
+    "start": "npx ts-node src/index.ts",
+    "link": "tsc --build && npm link",
+    "typeorm": "typeorm-ts-node-commonjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WeekendWarrior1/node-red-contrib-storagemodule-postgres.git"
+    "url": "git+https://github.com/luizcarlospedrosogomes/node-red-contrib-storagemodule-typeorm.git"
   },
-  "author": "Callan Halton",
+  "author": "LUIZ CARLOS PEDROSO GOMES",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/WeekendWarrior1/node-red-contrib-storagemodule-postgres/issues"
+    "url": "https://github.com/luizcarlospedrosogomes/node-red-contrib-storagemodule-typeorm/issues"
   },
-  "homepage": "https://github.com/WeekendWarrior1/node-red-contrib-storagemodule-postgres#readme",
+  "homepage": "https://github.com/luizcarlospedrosogomes/node-red-contrib-storagemodule-typeorm#readme",
   "dependencies": {
-    "pg": "^8.2.1"
+    "@sap/hana-client": "^2.19.21",
+    "hdb-pool": "^0.1.6",
+    "pg": "^8.2.1",
+    "reflect-metadata": "^0.2.1",
+    "typeorm": "^0.3.20"
   },
-  "keywords": [ "node-red" ]
+  "keywords": [
+    "node-red",
+    "typeorm"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "sqlite3": "^5.1.7"
+  }
 }
